@@ -13,10 +13,11 @@ page = 0
 for page in range(10):
     # отправим get()-запрос на сайт и сохраним полученное в переменную response
     response = requests.get(url)
-    # воспользуемся BeautifulSoup и отдадим ему response
-    # указав в кавычках как он нам поможет "html.parser"
+    # прогон документа через Beautiful Soup дает нам объект BeautifulSoup
+    # который представляет документ в виде вложенной структуры данных
+    # "html.parser"
     soup = BeautifulSoup(response.text, 'html.parser')
-    # воспользуемся функцией поиска из библеотеки BeautifulSoup4
+    # воспользуемся функцией поиска из библиотеки BeautifulSoup4
     # она возьмёт теги divs в коде страницы запроса и в них возьмём теги a
     for divs in soup.find_all("div", class_="kCrYT"):
         for a in divs.find_all("a"):
